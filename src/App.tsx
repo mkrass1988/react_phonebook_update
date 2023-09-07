@@ -1,26 +1,27 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-
-import Home from './pages/Home.tsx'
-import Dashboard from './pages/Dashboard.tsx'
-import About from './pages/About.tsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar.tsx'
 import routes from './config/routes.ts'
+import { Provider } from 'react-redux'
+import { store } from './redux/store.ts'
 
 function App() {
 
   return (
     <BrowserRouter>
-      {/* {Navbar goes here} */}
-        <Routes>
-          { routes.map((route: any, index: any) => (
-            <Route
-            key={index}
-            path={route.path}
-            element={
-              <route.component />
-            }
-            />
-          ))  }
-        </Routes>
+      <Navbar />
+        <Provider store={store}>
+          <Routes>
+            { routes.map((route: any, index: any) => (
+              <Route
+              key={index}
+              path={route.path}
+              element={
+                <route.component />
+              }
+              />
+            ))  }
+          </Routes>
+        </Provider>
     </BrowserRouter>
   )
 }

@@ -2,9 +2,13 @@ import Home from "../pages/Home"
 import Dashboard from "../pages/Dashboard"
 import About from "../pages/About"
 
+interface RouteType {
+    path: string,
+    component: () => JSX.Element,
+    name: string
+}
 
-
-const routes: any = [
+const routes: RouteType[] = [
     {
       path: "",
       component: Home,
